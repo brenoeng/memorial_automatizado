@@ -17,6 +17,7 @@ dados_gerais = {
     'mes': 'outubro',
     'ano': 2022,
     'cidade': 'Teresina',
+    'estado': 'Piauí',
     'UF': 'PI',
     'distribuidora': 'Equatorial Piauí',
 
@@ -25,6 +26,12 @@ dados_gerais = {
 dados_cliente = {
     'nome_cliente': 'ITAMIR TRINDADE',
     'rg': 324534124,
+    'codigo_uc': 124,
+    'classe_uc': 'B1',
+    'titular_uc': 'ITAMIR TRINDADE',
+    'endereco': 'Rua xxxxxxxxxxx',
+    'poste_prox': 66666,
+
 }
 
 dados_responsavel = {
