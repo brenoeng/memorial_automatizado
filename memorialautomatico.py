@@ -7,6 +7,16 @@ base = pd.ExcelFile('banco de modulos e inversores.xlsx')
 modulos = pd.read_excel(base, 'modulos')
 inversores = pd.read_excel(base, 'inversores')
 
+tipo_ligacao = 'mono'
+
+ligacao = {
+    'mono': ['monofásico', 'dois', 'um', 1],
+    'bi': ['bifásico', 'três', 'dois', 2],
+    'tri': ['trifásico', 'quatro', 'três', 3]
+}
+
+tipo_l = ligacao[tipo_ligacao]
+
 # informações gerais do memorial
 dados_gerais = {
     'tipo_geracao': "SOLAR FOTOVOLTAICO",
@@ -20,7 +30,15 @@ dados_gerais = {
     'estado': 'Piauí',
     'UF': 'PI',
     'distribuidora': 'Equatorial Piauí',
-
+    # [monofásico, bifásico, trifásico]
+    'tipo_lig': tipo_l[0],
+    # Quantidade de condutores incluindo o NEUTRO [dois, três, quatro]
+    'quant_condutores': tipo_l[1],
+    # Qauntidade de condutores de fase: um, dois ou três
+    'q_cond_fase': tipo_l[2],
+    'secao_ramal_fase': 10,
+    'secao_ramal_neutro': 10,
+    'n_polos': tipo_l[3]
 }
 
 dados_cliente = {
