@@ -92,5 +92,6 @@ dados_inversores = {
 
 }
 
+print(dados_inversores)
 doc.render(dados_gerais)
 doc.save("generated_doc.docx")
