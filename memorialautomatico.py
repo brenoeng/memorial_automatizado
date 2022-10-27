@@ -85,13 +85,16 @@ dados_gerais.update(dados_geradores)
 dados_gerais.update(dados_cliente)
 dados_gerais.update(dados_responsavel)
 
-pontencia_inversor = 33
+pontencia_inversor = 15
+marca_inv = 'SOFAR'
 
+# print(inversores)
+
+# print(inversores.loc[(inversores['Pn'] == pontencia_inversor) & (inversores['Fabricante'] == marca_inv), 'Fabricante'])
 dados_inversores = {
-    'pot_inv': pontencia_inversor,
-
+    'fab_inv': inversores.loc[(inversores['Pn'] == pontencia_inversor) & (inversores['Fabricante'] == marca_inv), 'Fabricante'].values[0],
 }
 
-print(dados_inversores)
+dados_gerais.update(dados_inversores)
 doc.render(dados_gerais)
 doc.save("generated_doc.docx")
