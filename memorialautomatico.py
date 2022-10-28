@@ -1,57 +1,53 @@
 from docxtpl import DocxTemplate
 import pandas as pd
+import dados
 
 doc = DocxTemplate("Memorial-Tecnico-Descritivo.docx")
 base = pd.ExcelFile('banco de modulos e inversores.xlsx')
 modulos = pd.read_excel(base, 'modulos')
 inversores = pd.read_excel(base, 'inversores')
 
-tipo_ligacao = 'tri'
-NOME = "LUCIFLAVIO RIBEIRO ROCHA"
-
-
 ligacao = {
     'mono': ['monofásico', 'dois', 'um', 1],
     'bi': ['bifásico', 'três', 'dois', 2],
     'tri': ['trifásico', 'quatro', 'três', 3]
 }
-
-tipo_l = ligacao[tipo_ligacao]
+tipo_l = ligacao[dados.tipo_ligacao]
 
 # informações gerais do memorial
 dados_gerais = {
-    'tipo_geracao': "SOLAR FOTOVOLTAICO",
+    'tipo_geracao': dados.tipo_de_geracao,
     # Tensão nominal da rede
-    'v_nom': 380,
+    'v_nom': dados.tensao_nominal,
     # Tipo de atendimento [INDIVIDUAL, AUTOCONSUMO REMOTO, GERAÇÃO COMPARTILHADA OU EMUC]
-    'tipo_atendimento': 'AUTOCONSUMO REMOTO',
-    'mes': 'outubro',
-    'ano': 2022,
-    'cidade': 'Teresina',
-    'estado': 'Piauí',
-    'UF': 'PI',
-    'distribuidora': 'Equatorial Piauí',
+    'tipo_atendimento': dados.tipo_atendimento,
+    'mes': dados.mes,
+    'ano': dados.ano,
+    'cidade': dados.cidade, 
+    'estado': dados.estado,
+    'UF': dados.uf,
+    'distribuidora': dados.distribuidora,
     # [monofásico, bifásico, trifásico]
     'tipo_lig': tipo_l[0],
     # Quantidade de condutores incluindo o NEUTRO [dois, três, quatro]
     'quant_condutores': tipo_l[1],
     # Qauntidade de condutores de fase: um, dois ou três
     'q_cond_fase': tipo_l[2],
-    'secao_ramal_fase': 10,
-    'secao_ramal_neutro': 10,
+    'secao_ramal_fase': dados.secao_ramal_fase,
+    'secao_ramal_neutro': dados.secao_ramal_neutro,
     'n_polos': tipo_l[3],
-    'Quant_Placas': 27,
-    'Quant_invers': 1
+    'Quant_Placas': dados.quantidade_placas,
+    'Quant_invers': dados.quantidade_inversores
 }
 
 dados_cliente = {
-    'nome_cliente': 'NOME',
-    'rg': 3062015349,
-    'codigo_uc': 895288,
-    'classe_uc': 'B1',
-    'titular_uc': 'NOME',
-    'endereco': 'RUA NAPOLEAO LIMA - 1674 JOQUEI CLUBE',
-    'poste_prox': "SN",
+    'nome_cliente': dados.nome,
+    'rg': dados.rg,
+    'codigo_uc': dados.codigo_uc,
+    'classe_uc': dados.classe_uc,
+    'titular_uc': dados.titular_uc,
+    'endereco': dados.endereco,
+    'poste_prox': dados.poste_prox,
 
 }
 
@@ -131,4 +127,4 @@ dados_inversores = {
 }
 
 doc.render(dados_gerais)
-doc.save(f"2.Memorial tecnico descritivo da instalação {NOME}.docx")
+doc.save("generated_doc.docx")
