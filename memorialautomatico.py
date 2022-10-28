@@ -48,24 +48,23 @@ dados_cliente = {
     'titular_uc': dados.titular_uc,
     'endereco': dados.endereco,
     'poste_prox': dados.poste_prox,
-
 }
 
 dados_responsavel = {
-    'nome_responsavel_tecnico': 'CARLOS MIGUEL',
+    'nome_responsavel_tecnico': dados.nome_responsavel_tecnico,
     'profissao': 'Engenheiro Eletricista',
-    'crea': 12412512
+    'crea': dados.crea
 }
 
 # dados do projeto/sistema
-marca = 'CANADIANSOLAR'
-potencia_placa = 445
-quant_placas = 9
+marca = dados.marca_modulos
+potencia_placa = dados.potencia_modulos
+quant_placas = dados.quant_modulos
 pot_total = (quant_placas * potencia_placa) / 1000
 
-marca_inversor = 'SOFAR'
-potencia_inversor = 15
-quant_inversor = 1
+marca_inversor = dados.marca_inversor
+potencia_inversor = dados.pot_inversor
+quant_inversor = dados.quantidade_inversores
 
 
 dados_geradores = {
